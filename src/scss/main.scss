@@ -17,12 +17,12 @@ a {
 
   &.light {
     &:before {
-      background-color: #1a202c;
+      background-color: theme("colors.gray.900");
     }
   }
   &.dark {
     &:before {
-      background-color: #fff;
+      background-color: theme("colors.white");
     }
   }
   &:before {
@@ -54,9 +54,6 @@ a {
 
 .swiper-container {
   width: 100%;
-  .swiper-wrapper {
-    padding-bottom: 30px;
-  }
 
   .swiper-pagination {
     position: relative;
@@ -69,13 +66,13 @@ a {
       width: 30px;
       height: 8px;
       border-radius: 0;
-      background-color: #cbd5e0;
+      background-color: theme("colors.gray.400");
       opacity: 1;
       &:focus {
         outline: none;
       }
       &.swiper-pagination-bullet-active {
-        background-color: #718096;
+        background-color: theme("colors.gray.600");
       }
       &:not(:last-child) {
         margin: 0 6px 0 0 !important;
@@ -99,7 +96,7 @@ a {
     transform: translateX(-50%);
     width: 1px;
     height: 100%;
-    background-color: #ccc;
+    background-color: theme("colors.gray.400");
     left: 4rem;
     @media (min-width: 768px) {
       left: 50%;
@@ -175,22 +172,22 @@ a {
 }
 
 .tippy-box[data-theme~="light"] {
-  background-color: #1a202c;
-  color: #fff;
+  background-color: theme("colors.gray.900");
+  color: theme("colors.white");
   .tippy-arrow {
     &:before {
-      border-top-color: #1a202c;
-      border-bottom-color: #1a202c;
+      border-top-color: theme("colors.gray.900");
+      border-bottom-color: theme("colors.gray.900");
     }
   }
 }
 .tippy-box[data-theme~="dark"] {
-  background-color: #fff;
-  color: #1a202c;
+  background-color: theme("colors.white");
+  color: theme("colors.gray.900");
   .tippy-arrow {
     &:before {
-      border-top-color: #fff;
-      border-bottom-color: #fff;
+      border-top-color: theme("colors.white");
+      border-bottom-color: theme("colors.white");
     }
   }
 }

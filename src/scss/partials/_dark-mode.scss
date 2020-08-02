@@ -14,7 +14,7 @@ button.dark-light-toggle {
     border-radius: 50%;
     overflow: visible;
     transition: all 0.45s ease 0s;
-    background-color: #1a202c;
+    background-color: theme("colors.gray.900");
     &:before {
       content: "";
       height: 24px;
@@ -27,12 +27,14 @@ button.dark-light-toggle {
       transform: translate(8px, -8px);
       border-radius: 50%;
       transition: transform 0.45s ease 0s;
-      background-color: #fff;
+      background-color: theme("colors.white");
     }
     &:after {
-      box-shadow: 0 -23px 0 #fff, 0 23px 0 #fff, 23px 0 0 #fff, -23px 0 0 #fff,
-        15px 15px 0 #fff, -15px 15px 0 #fff, 15px -15px 0 #fff,
-        -15px -15px 0 #fff;
+      box-shadow: 0 -23px 0 theme("colors.white"),
+        0 23px 0 theme("colors.white"), 23px 0 0 theme("colors.white"),
+        -23px 0 0 theme("colors.white"), 15px 15px 0 theme("colors.white"),
+        -15px 15px 0 theme("colors.white"), 15px -15px 0 theme("colors.white"),
+        -15px -15px 0 theme("colors.white");
       content: "";
       height: 8px;
       left: 50%;
@@ -46,11 +48,11 @@ button.dark-light-toggle {
     }
 
     &.dark {
-      background-color: #fff;
+      background-color: theme("colors.white");
 
       transform: scale(0.55);
       &:before {
-        background-color: #1a202c;
+        background-color: theme("colors.gray.900");
         transform: translate(24px, -24px);
       }
       &:after {

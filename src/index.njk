@@ -1,13 +1,12 @@
 <!doctype html>
 <html lang="en">
     <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-        <title>Document</title>
+        <title>Bar Zioni - Fullstack Developer</title>
         <script src="./assets/head.bundle.js"></script>
         {% bundledCss %}
-
         <script>
             function darkMode() {
-                const scheme = localStorage.getItem('colorScheme')
+                var scheme = localStorage.getItem('colorScheme')
                 if (scheme === 'dark') {
                     return {darkMode: true}
                 }
@@ -37,7 +36,7 @@
                     </span>
                     <div class="ml-4 leading-tight">
                         <span class="block font-bold text-lg">Bar Zioni</span>
-                        <span class="text-sm block" :class="darkMode ? 'text-gray-400' : 'text-gray-600'">Fullstack Web-Developer</span></div>
+                        <span class="text-sm block" :class="darkMode ? 'text-gray-600' : 'text-gray-900'">Fullstack Developer</span></div>
                 </a>
                 <button class="dark-light-toggle" @click="darkMode ? localStorage.setItem(`colorScheme`, `light`) : localStorage.setItem(`colorScheme`, `dark`); darkMode = !darkMode;">
                     <span :class="darkMode ? 'dark' : 'light' ">Toggle</span>
@@ -82,7 +81,7 @@
                     <p class="mt-2 max-w-lg md:mx-auto" :class="darkMode ? 'text-gray-500' : 'text-gray-700'">{{services.subtitle}}</p>
                 </div>
                 <div class="swiper-container mt-16 md:px-8 ">
-                    <div class="swiper-wrapper md:grid md:gap-16 md:grid-cols-2">
+                    <div class="swiper-wrapper pb-8 md:pb-0 md:grid md:gap-16 md:grid-cols-2">
                         {% for item in services.list %}
                             <div class="swiper-slide px-8 md:px-0">
                                 <span class="font-bold">{{item.title}}</span>
