@@ -1,18 +1,7 @@
 const path = require("path");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-// const ManifestPlugin = require('webpack-manifest-plugin');
-var HtmlWebpackPlugin = require("html-webpack-plugin");
 
-const devPlugins = [
-  // new HtmlWebpackPlugin({
-  //   template: path.resolve(__dirname, "src/index.html"),
-  //   filename: path.resolve(__dirname, "src/index.njk"),
-  //   // Hash is used for cache busting the generated webpack.html
-  //   // while keeping the same file name in the output
-  //   hash: true,
-  //   inject: false,
-  // }),
-];
+const devPlugins = [];
 const prdPlugins = [
   new MiniCssExtractPlugin({
     filename: "main.css",
@@ -72,9 +61,5 @@ module.exports = (env, argv) => {
     },
 
     plugins: isDev ? devPlugins : prdPlugins,
-    // devServer: {
-    //   contentBase: path.join(__dirname, "public"),
-    //   // hot: true,
-    // },
   };
 };
