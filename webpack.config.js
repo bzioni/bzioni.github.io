@@ -23,7 +23,7 @@ module.exports = (env, argv) => {
       head: "./src/js/head.js",
     },
     output: {
-      path: path.resolve(__dirname, "dist", "assets"),
+      path: path.resolve(__dirname, "docs", "assets"),
       filename: "[name].bundle.js",
     },
     module: {

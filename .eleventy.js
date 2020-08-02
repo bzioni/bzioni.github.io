@@ -11,7 +11,7 @@ module.exports = (config) => {
   config.setBrowserSyncConfig({
     files: [
       {
-        match: ["./dist/assets/**/*"],
+        match: ["./docs/assets/**/*"],
         fn: function () {
           this.reload();
         },
@@ -22,7 +22,7 @@ module.exports = (config) => {
   return {
     dir: {
       input: "src",
-      output: "dist",
+      output: "docs",
       //   includes: 'includes',
       //   layouts: 'layouts',
       data: "data",
