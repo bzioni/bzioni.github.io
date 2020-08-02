@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+    <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+        <title>Document</title>
+        <script src="./assets/head.bundle.js"></script>
+    </head>
+    <body>
+        <header>
+            <div aria-hidden="" class="h-4 bg-green-500"></div>
+            <div class="max-w-screen-lg mx-auto px-8 pt-16 flex justify-between items-center">
+                <a href="/" class="flex items-center">
+                    <span class="text-gray-800 w-12">
+                        <svg class="" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 242 242">
+                            <defs>
+                                <clipPath clipPathUnits="userSpaceOnUse" id="cp1"><path d="M-59 -59L301 -59L301 301L-59 301Z"/></clipPath>
+                            </defs>
+                            <g id="Page 3" clip-path="url(#cp1)" class="fill-current"><path id="Path 14" fill-rule="evenodd" class="shp0" d="M223.11 121C234.57 133.8 241.54 150.69 241.54 169.22C241.54 209.16 209.16 241.54 169.22 241.54L0.45 241.54L0.45 0.45L169.22 0.45C209.16 0.45 241.54 32.83 241.54 72.78C241.54 91.31 234.57 108.2 223.11 121ZM193.33 169.22C193.33 155.9 182.53 145.11 169.22 145.11L130.99 145.11L138.03 138.06L169.22 106.88L178.58 97.51L186.21 89.88C186.22 89.86 186.24 89.85 186.26 89.83C186.83 89.27 187.36 88.68 187.86 88.07C188.09 87.78 188.29 87.49 188.51 87.2C188.76 86.86 189.03 86.53 189.26 86.18C189.49 85.82 189.7 85.46 189.91 85.11C190.1 84.79 190.3 84.48 190.47 84.15C190.67 83.79 190.84 83.41 191.01 83.04C191.17 82.7 191.34 82.37 191.48 82.01C191.64 81.65 191.76 81.28 191.89 80.91C192.02 80.53 192.17 80.17 192.29 79.79C192.4 79.42 192.48 79.03 192.58 78.65C192.67 78.27 192.78 77.89 192.86 77.5C192.94 77.06 193 76.61 193.06 76.16C193.11 75.83 193.17 75.5 193.21 75.16C193.28 74.38 193.33 73.58 193.33 72.78C193.33 71.97 193.28 71.18 193.21 70.4C193.17 70.07 193.11 69.74 193.06 69.41C193 68.96 192.94 68.51 192.86 68.06C192.78 67.67 192.67 67.3 192.58 66.91C192.48 66.53 192.4 66.15 192.29 65.78C192.17 65.41 192.03 65.03 191.89 64.66C191.76 64.29 191.64 63.92 191.48 63.55C191.34 63.2 191.17 62.87 191.01 62.53C190.84 62.16 190.67 61.78 190.47 61.41C190.3 61.09 190.1 60.78 189.92 60.47C189.71 60.11 189.5 59.75 189.26 59.39C189.03 59.05 188.78 58.72 188.53 58.39C188.31 58.1 188.09 57.79 187.86 57.5C187.38 56.91 186.87 56.35 186.33 55.81C186.31 55.78 186.29 55.76 186.26 55.73C186.24 55.7 186.21 55.69 186.18 55.65C185.64 55.12 185.08 54.62 184.49 54.13C184.21 53.9 183.91 53.69 183.6 53.48C183.28 53.23 182.95 52.97 182.61 52.73C182.25 52.51 181.89 52.29 181.53 52.08C181.21 51.9 180.91 51.69 180.58 51.53C180.21 51.33 179.84 51.16 179.46 50.98C179.13 50.82 178.79 50.65 178.45 50.51C178.08 50.36 177.7 50.23 177.33 50.11C176.96 49.96 176.59 49.83 176.22 49.72C175.84 49.59 175.46 49.52 175.08 49.42C174.7 49.33 174.33 49.22 173.93 49.14C173.49 49.05 173.03 49 172.58 48.94C172.26 48.89 171.93 48.82 171.6 48.79C170.81 48.72 170.01 48.67 169.21 48.67L72.78 48.67C66.62 48.67 60.44 51.03 55.73 55.73C46.32 65.15 46.32 80.42 55.73 89.83C60.44 94.53 66.6 96.88 72.76 96.89L111.01 96.89L103.94 103.96L62.79 145.11L55.79 152.11L55.79 152.12C55.77 152.14 55.75 152.16 55.73 152.17C46.32 161.59 46.32 176.85 55.73 186.27C60.44 190.97 66.62 193.33 72.78 193.33L169.22 193.33C182.53 193.33 193.33 182.54 193.33 169.22Z"/></g>
+                        </svg>
+                    </span>
+                    <div class="ml-4 leading-none">
+                        <span class="block font-black text-lg">Bar Zioni</span>
+                        <span class="text-sm block text-gray-600" :class="darkMode ? 'text-gray-400' : 'text-gray-600'">Fullstack Developer</span></div>
+                </a>
+                <button class="w-12 h-12 p-2 dark-light-toggle" @click="darkMode ? localStorage.setItem(`colorScheme`, `light`) : localStorage.setItem(`colorScheme`, `dark`); darkMode = !darkMode;">
+                 <span></span>
+                </button>
+            </div>
+        </header>
+        <main class="container mx-auto relative">
+            <section class="max-w-screen-lg mx-auto px-8 py-16 flex flex-wrap-reverse items-center">
+                <div class="mt-16 md:mt-0 md:w-7/12">
+                    <h1 class="font-bold text-gray-700 text-3xl md:text-4xl">Creating<br>
+                        <span class="uppercase">
+                            <span class="invisible">fast</span>
+                            <span class="invisible">beautiful</span>
+                            <span class="invisible">scalable</span>
+                            <span class="invisible">optimized</span></span><br>websites is my expertise</h1>
+                    <h2 class="mt-4 md:text-lg text-gray-700" :class="darkMode ? 'text-gray-400' : 'text-gray-700'">I am a full-stack web developer with a lot of passion for what i'm doing!</h2>
+                    <nav class="mt-8 flex items-center">
+                        <a href="#contact" class="text-sm px-4 py-3 rounded font-bold uppercase tracking-wide bg-green-500 text-white">Contact</a>
+                        <a href="#projects" class="text-sm px-4 py-3 rounded font-bold uppercase tracking-wide bg-green-200 text-green-500 ml-4">Projects</a>
+                    </nav>
+                </div>
+                <figure class="w-full md:w-5/12 md:pl-16"><img class="w-1/2 object-cover mx-auto rounded-lg shadow-lg md:w-full" src="assets/me.png" alt="A selfie of yours truly."></figure>
+            </section>
+            <section class="py-16 border-b-2 border-t-2 bg-gray-100" :class="darkMode ? 'bg-gray-900 border-gray-800' : 'bg-gray-100'">
+                <div class="max-w-screen-lg mx-auto px-8">
+                    <h3 class="font-bold leading-tight text-2xl md:text-3xl">What I do for a living.</h3>
+                    <p class="mt-2 max-w-lg">Listed below you will find a comprehensive list of the skills and services that I provide for my clients.</p>
+                    <div class="mt-16 grid grid-cols-1 gap-16 sm:grid-cols-2 lg:grid-cols-3">
+                        <div>
+                            <h4 class="font-bold">Accessibility</h4>
+                            <p class="mt-2 text-sm">I am constantly making sure the code I produce is WCAG compliant and accessible to all users, regardless of their disabilities. Nobody should have a poor experience when it comes to the web.</p>
+                        </div>
+                        <div>
+                            <h4 class="font-bold">Backend Development</h4>
+                            <p class="mt-2 text-sm">I can build full-blown traditional content management systems with Craft CMS, or headless APIs for accessing and consuming data with Node and GraphQL.</p>
+                        </div>
+                        <div>
+                            <h4 class="font-bold">Deployment</h4>
+                            <p class="mt-2 text-sm">I am an expert at configuring continuous deployment and continuous integration. My tools of choice are DigitalOcean, Netlify, and GitHub Actions.</p>
+                        </div>
+                        <div>
+                            <h4 class="font-bold">Frontend Development</h4>
+                            <p class="mt-2 text-sm">My biggest strength is turning static mockups and designs into fully responsive codebases. I am proficient in the latest and greatest frontend frameworks like React, Vue, Svelte, and TailwindCSS.</p>
+                        </div>
+                        <div>
+                            <h4 class="font-bold">Hosting</h4>
+                            <p class="mt-2 text-sm">Regardless of project type, I can configure servers, domains, and credentials to make sure everything is secure, performant, and dead-simple.</p>
+                        </div>
+                        <div>
+                            <h4 class="font-bold">Web Consulting</h4>
+                            <p class="mt-2 text-sm">I can observe, diagnose, and recommend solutions in all of the services listed on this very page.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section>Timeline</section>
+            <section>Project</section>
+            <form name="contact" method="post" aria-label="contact form" action="/?contact" id="contact" class="max-w-screen-lg mx-auto px-8 py-16"><input type="hidden" name="form-name" value="contact">
+                <div x-show="!submittedForm" class="max-w-lg">
+                    <h3 class="font-bold leading-tight text-2xl md:text-3xl">Get in touch with me.</h3>
+                    <p class="mt-2">Fill out the form below, and I'll be in contact as soon as possible. Thank you so much for taking the time to check me out.</p>
+                </div>
+                <div x-show="submittedForm" class="max-w-lg" style="display: none;">
+                    <h3 class="font-bold leading-tight text-2xl md:text-3xl">Thank you for reaching out!</h3>
+                    <p class="mt-2">I will be in touch very shortly, my friend.</p>
+                </div>
+                <div x-show="!submittedForm" class="mt-16 grid grid-cols-2 gap-8">
+                    <label class="col-span-2 md:col-span-1">
+                        <span class="block">Name:</span>
+                        <input name="name" required="" class="mt-2 form-input w-full" :class="darkMode ? 'text-gray-900' : ''"></label>
+                    <label class="col-span-2 md:col-span-1">
+                        <span class="block">Email:</span>
+                        <input name="email" type="email" required="" class="mt-2 form-input w-full" :class="darkMode ? 'text-gray-900' : ''"></label>
+                    <label class="col-span-2">
+                        <span class="block">Message:</span>
+                        <textarea name="message" rows="7" required="" class="mt-2 form-textarea w-full" :class="darkMode ? 'text-gray-900' : ''"></textarea>
+                    </label>
+                    <div class="col-span-2">
+                        <button type="submit" class="text-sm px-4 py-3 rounded font-bold uppercase tracking-wide bg-indigo-500 text-white">Submit</button>
+                    </div>
+                </div>
+            </form>
+        </main>
+        <script src="./assets/body.bundle.js"></script>
+    </body>
+</html>

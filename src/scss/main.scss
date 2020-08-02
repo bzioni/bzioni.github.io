@@ -1,0 +1,167 @@
+@import "../../node_modules/tailwindcss/base";
+@import "../../node_modules/tailwindcss/components";
+@import "../../node_modules/tailwindcss/utilities";
+@import "../../node_modules/tippy.js/dist/tippy.css";
+@import "../../node_modules/tippy.js/animations/shift-away.css";
+@import "../../node_modules/swiper/swiper.scss";
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap");
+@import "./partials/dark-mode";
+@import "./partials/classes";
+
+body {
+  font-family: "Poppins", sans-serif;
+}
+
+#stack {
+  img {
+    opacity: 0.8;
+    filter: grayscale(100%);
+    &:hover {
+      opacity: 1;
+      filter: grayscale(0);
+    }
+  }
+}
+
+.swiper-container {
+  width: 100%;
+  .swiper-wrapper {
+    padding-bottom: 30px;
+  }
+
+  .swiper-pagination {
+    position: relative;
+    bottom: 0 !important;
+    justify-content: center;
+    width: 100%;
+    height: 8px;
+    .swiper-pagination-bullet {
+      display: block;
+      width: 30px;
+      height: 8px;
+      border-radius: 0;
+      background-color: #cbd5e0;
+      opacity: 1;
+      &:focus {
+        outline: none;
+      }
+      &.swiper-pagination-bullet-active {
+        background-color: #718096;
+      }
+      &:not(:last-child) {
+        margin: 0 6px 0 0 !important;
+      }
+      &:last-child {
+        margin: 0 0 !important;
+      }
+    }
+  }
+}
+
+.timeline {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &:before {
+    content: "";
+    position: absolute;
+    transform: translateX(-50%);
+    width: 1px;
+    height: 100%;
+    background-color: #ccc;
+    left: 4rem;
+    @media (min-width: 768px) {
+      left: 50%;
+    }
+  }
+  ul {
+    li {
+      position: relative;
+      clear: both;
+
+      &:hover {
+        .company {
+          img {
+            filter: grayscale(0);
+          }
+        }
+      }
+      @media (min-width: 768px) {
+        width: 50%;
+
+        &:nth-child(even) {
+          float: right;
+          text-align: left;
+          .year {
+            right: 100%;
+            text-align: right;
+            padding-right: 4rem;
+          }
+          .company {
+            left: -3rem;
+          }
+          .content {
+            margin-left: 4rem;
+          }
+        }
+        &:nth-child(odd) {
+          float: left;
+          text-align: right;
+          .year {
+            left: 100%;
+            text-align: left;
+            padding-left: 4rem;
+          }
+          .company {
+            left: unset;
+            right: -3rem;
+          }
+          .content {
+            margin-right: 4rem;
+          }
+        }
+      }
+      @media (min-width: 768px) {
+        .year {
+          width: 100%;
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+        }
+      }
+      .company {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        left: -3rem;
+        img {
+          transition: filter 0.4s ease-in-out;
+          filter: grayscale(100%);
+        }
+      }
+    }
+  }
+}
+
+.tippy-box[data-theme~="light"] {
+  background-color: #1a202c;
+  color: #fff;
+  .tippy-arrow {
+    &:before {
+      border-top-color: #1a202c;
+      border-bottom-color: #1a202c;
+    }
+  }
+}
+.tippy-box[data-theme~="dark"] {
+  background-color: #fff;
+  color: #1a202c;
+  .tippy-arrow {
+    &:before {
+      border-top-color: #fff;
+      border-bottom-color: #fff;
+    }
+  }
+}
