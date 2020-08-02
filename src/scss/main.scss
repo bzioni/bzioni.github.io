@@ -12,6 +12,35 @@ body {
   font-family: "Poppins", sans-serif;
 }
 
+a {
+  position: relative;
+
+  &.light {
+    &:before {
+      background-color: #1a202c;
+    }
+  }
+  &.dark {
+    &:before {
+      background-color: #fff;
+    }
+  }
+  &:before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    height: 2px;
+    width: 100%;
+    transition: width 0.3s ease-in-out;
+  }
+  &:hover {
+    &:before {
+      width: 0;
+    }
+  }
+}
+
 #stack {
   img {
     opacity: 0.8;

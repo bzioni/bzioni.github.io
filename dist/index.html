@@ -3,106 +3,222 @@
     <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
         <title>Document</title>
         <script src="./assets/head.bundle.js"></script>
+        
+
+        <script>
+            function darkMode() {
+                const scheme = localStorage.getItem('colorScheme')
+                if (scheme === 'dark') {
+                    return {darkMode: true}
+                }
+                if (scheme === 'light') {
+                    return {darkMode: false}
+                }
+                return {
+                    darkMode: window
+                        .matchMedia('(prefers-color-scheme: dark)')
+                        .matches
+                }
+            }
+        </script>
     </head>
-    <body>
+    <body x-data="{...darkMode()}" x-show="darkMode !== null" class="antialiased" :class="darkMode ? 'bg-gray-900 text-white' : 'text-gray-900'">
+        <div id="progress-bar" class="h-4 fixed t-0 l-0 w-0 z-50" :class="darkMode ? 'bg-pink-600' : 'bg-purple-600'"></div>
         <header>
-            <div aria-hidden="" class="h-4 bg-green-500"></div>
-            <div class="max-w-screen-lg mx-auto px-8 pt-16 flex justify-between items-center">
+            <div class="max-w-screen-md mx-auto px-8 pt-16 flex justify-between items-center">
                 <a href="/" class="flex items-center">
-                    <span class="text-gray-800 w-12">
-                        <svg class="" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 242 242">
+                    <span class="w-12" :class="darkMode ? 'text-gray-600' : 'text-gray-900'">
+                        <svg class="fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 242 242">
                             <defs>
                                 <clipPath clipPathUnits="userSpaceOnUse" id="cp1"><path d="M-59 -59L301 -59L301 301L-59 301Z"/></clipPath>
                             </defs>
-                            <g id="Page 3" clip-path="url(#cp1)" class="fill-current"><path id="Path 14" fill-rule="evenodd" class="shp0" d="M223.11 121C234.57 133.8 241.54 150.69 241.54 169.22C241.54 209.16 209.16 241.54 169.22 241.54L0.45 241.54L0.45 0.45L169.22 0.45C209.16 0.45 241.54 32.83 241.54 72.78C241.54 91.31 234.57 108.2 223.11 121ZM193.33 169.22C193.33 155.9 182.53 145.11 169.22 145.11L130.99 145.11L138.03 138.06L169.22 106.88L178.58 97.51L186.21 89.88C186.22 89.86 186.24 89.85 186.26 89.83C186.83 89.27 187.36 88.68 187.86 88.07C188.09 87.78 188.29 87.49 188.51 87.2C188.76 86.86 189.03 86.53 189.26 86.18C189.49 85.82 189.7 85.46 189.91 85.11C190.1 84.79 190.3 84.48 190.47 84.15C190.67 83.79 190.84 83.41 191.01 83.04C191.17 82.7 191.34 82.37 191.48 82.01C191.64 81.65 191.76 81.28 191.89 80.91C192.02 80.53 192.17 80.17 192.29 79.79C192.4 79.42 192.48 79.03 192.58 78.65C192.67 78.27 192.78 77.89 192.86 77.5C192.94 77.06 193 76.61 193.06 76.16C193.11 75.83 193.17 75.5 193.21 75.16C193.28 74.38 193.33 73.58 193.33 72.78C193.33 71.97 193.28 71.18 193.21 70.4C193.17 70.07 193.11 69.74 193.06 69.41C193 68.96 192.94 68.51 192.86 68.06C192.78 67.67 192.67 67.3 192.58 66.91C192.48 66.53 192.4 66.15 192.29 65.78C192.17 65.41 192.03 65.03 191.89 64.66C191.76 64.29 191.64 63.92 191.48 63.55C191.34 63.2 191.17 62.87 191.01 62.53C190.84 62.16 190.67 61.78 190.47 61.41C190.3 61.09 190.1 60.78 189.92 60.47C189.71 60.11 189.5 59.75 189.26 59.39C189.03 59.05 188.78 58.72 188.53 58.39C188.31 58.1 188.09 57.79 187.86 57.5C187.38 56.91 186.87 56.35 186.33 55.81C186.31 55.78 186.29 55.76 186.26 55.73C186.24 55.7 186.21 55.69 186.18 55.65C185.64 55.12 185.08 54.62 184.49 54.13C184.21 53.9 183.91 53.69 183.6 53.48C183.28 53.23 182.95 52.97 182.61 52.73C182.25 52.51 181.89 52.29 181.53 52.08C181.21 51.9 180.91 51.69 180.58 51.53C180.21 51.33 179.84 51.16 179.46 50.98C179.13 50.82 178.79 50.65 178.45 50.51C178.08 50.36 177.7 50.23 177.33 50.11C176.96 49.96 176.59 49.83 176.22 49.72C175.84 49.59 175.46 49.52 175.08 49.42C174.7 49.33 174.33 49.22 173.93 49.14C173.49 49.05 173.03 49 172.58 48.94C172.26 48.89 171.93 48.82 171.6 48.79C170.81 48.72 170.01 48.67 169.21 48.67L72.78 48.67C66.62 48.67 60.44 51.03 55.73 55.73C46.32 65.15 46.32 80.42 55.73 89.83C60.44 94.53 66.6 96.88 72.76 96.89L111.01 96.89L103.94 103.96L62.79 145.11L55.79 152.11L55.79 152.12C55.77 152.14 55.75 152.16 55.73 152.17C46.32 161.59 46.32 176.85 55.73 186.27C60.44 190.97 66.62 193.33 72.78 193.33L169.22 193.33C182.53 193.33 193.33 182.54 193.33 169.22Z"/></g>
+                            <g id="Page 3" clip-path="url(#cp1)"><path id="Path 14" fill-rule="evenodd" class="shp0" d="M223.11 121C234.57 133.8 241.54 150.69 241.54 169.22C241.54 209.16 209.16 241.54 169.22 241.54L0.45 241.54L0.45 0.45L169.22 0.45C209.16 0.45 241.54 32.83 241.54 72.78C241.54 91.31 234.57 108.2 223.11 121ZM193.33 169.22C193.33 155.9 182.53 145.11 169.22 145.11L130.99 145.11L138.03 138.06L169.22 106.88L178.58 97.51L186.21 89.88C186.22 89.86 186.24 89.85 186.26 89.83C186.83 89.27 187.36 88.68 187.86 88.07C188.09 87.78 188.29 87.49 188.51 87.2C188.76 86.86 189.03 86.53 189.26 86.18C189.49 85.82 189.7 85.46 189.91 85.11C190.1 84.79 190.3 84.48 190.47 84.15C190.67 83.79 190.84 83.41 191.01 83.04C191.17 82.7 191.34 82.37 191.48 82.01C191.64 81.65 191.76 81.28 191.89 80.91C192.02 80.53 192.17 80.17 192.29 79.79C192.4 79.42 192.48 79.03 192.58 78.65C192.67 78.27 192.78 77.89 192.86 77.5C192.94 77.06 193 76.61 193.06 76.16C193.11 75.83 193.17 75.5 193.21 75.16C193.28 74.38 193.33 73.58 193.33 72.78C193.33 71.97 193.28 71.18 193.21 70.4C193.17 70.07 193.11 69.74 193.06 69.41C193 68.96 192.94 68.51 192.86 68.06C192.78 67.67 192.67 67.3 192.58 66.91C192.48 66.53 192.4 66.15 192.29 65.78C192.17 65.41 192.03 65.03 191.89 64.66C191.76 64.29 191.64 63.92 191.48 63.55C191.34 63.2 191.17 62.87 191.01 62.53C190.84 62.16 190.67 61.78 190.47 61.41C190.3 61.09 190.1 60.78 189.92 60.47C189.71 60.11 189.5 59.75 189.26 59.39C189.03 59.05 188.78 58.72 188.53 58.39C188.31 58.1 188.09 57.79 187.86 57.5C187.38 56.91 186.87 56.35 186.33 55.81C186.31 55.78 186.29 55.76 186.26 55.73C186.24 55.7 186.21 55.69 186.18 55.65C185.64 55.12 185.08 54.62 184.49 54.13C184.21 53.9 183.91 53.69 183.6 53.48C183.28 53.23 182.95 52.97 182.61 52.73C182.25 52.51 181.89 52.29 181.53 52.08C181.21 51.9 180.91 51.69 180.58 51.53C180.21 51.33 179.84 51.16 179.46 50.98C179.13 50.82 178.79 50.65 178.45 50.51C178.08 50.36 177.7 50.23 177.33 50.11C176.96 49.96 176.59 49.83 176.22 49.72C175.84 49.59 175.46 49.52 175.08 49.42C174.7 49.33 174.33 49.22 173.93 49.14C173.49 49.05 173.03 49 172.58 48.94C172.26 48.89 171.93 48.82 171.6 48.79C170.81 48.72 170.01 48.67 169.21 48.67L72.78 48.67C66.62 48.67 60.44 51.03 55.73 55.73C46.32 65.15 46.32 80.42 55.73 89.83C60.44 94.53 66.6 96.88 72.76 96.89L111.01 96.89L103.94 103.96L62.79 145.11L55.79 152.11L55.79 152.12C55.77 152.14 55.75 152.16 55.73 152.17C46.32 161.59 46.32 176.85 55.73 186.27C60.44 190.97 66.62 193.33 72.78 193.33L169.22 193.33C182.53 193.33 193.33 182.54 193.33 169.22Z"/></g>
                         </svg>
                     </span>
-                    <div class="ml-4 leading-none">
-                        <span class="block font-black text-lg">Bar Zioni</span>
-                        <span class="text-sm block text-gray-600" :class="darkMode ? 'text-gray-400' : 'text-gray-600'">Fullstack Developer</span></div>
+                    <div class="ml-4 leading-tight">
+                        <span class="block font-bold text-lg">Bar Zioni</span>
+                        <span class="text-sm block" :class="darkMode ? 'text-gray-400' : 'text-gray-600'">Fullstack Web-Developer</span></div>
                 </a>
-                <button class="w-12 h-12 p-2 dark-light-toggle" @click="darkMode ? localStorage.setItem(`colorScheme`, `light`) : localStorage.setItem(`colorScheme`, `dark`); darkMode = !darkMode;">
-                 <span></span>
+                <button class="dark-light-toggle" @click="darkMode ? localStorage.setItem(`colorScheme`, `light`) : localStorage.setItem(`colorScheme`, `dark`); darkMode = !darkMode;">
+                    <span :class="darkMode ? 'dark' : 'light' ">Toggle</span>
                 </button>
             </div>
         </header>
-        <main class="container mx-auto relative">
-            <section class="max-w-screen-lg mx-auto px-8 py-16 flex flex-wrap-reverse items-center">
-                <div class="mt-16 md:mt-0 md:w-7/12">
-                    <h1 class="font-bold text-gray-700 text-3xl md:text-4xl">Creating<br>
-                        <span class="uppercase">
-                            <span class="invisible">fast</span>
-                            <span class="invisible">beautiful</span>
-                            <span class="invisible">scalable</span>
-                            <span class="invisible">optimized</span></span><br>websites is my expertise</h1>
-                    <h2 class="mt-4 md:text-lg text-gray-700" :class="darkMode ? 'text-gray-400' : 'text-gray-700'">I am a full-stack web developer with a lot of passion for what i'm doing!</h2>
-                    <nav class="mt-8 flex items-center">
-                        <a href="#contact" class="text-sm px-4 py-3 rounded font-bold uppercase tracking-wide bg-green-500 text-white">Contact</a>
-                        <a href="#projects" class="text-sm px-4 py-3 rounded font-bold uppercase tracking-wide bg-green-200 text-green-500 ml-4">Projects</a>
+        <main class="max-w-screen-md mx-auto">
+            <section class="px-8 md:px-0 py-16 text-center">
+                <figure class="block w-48 h-48 md:w-64 md:h-64 mx-auto rounded-full relative overflow-hidden">
+                    <span class="absolute block t-0 l-0 w-full h-full opacity-25" :class="darkMode ? 'bg-pink-600' : 'bg-purple-600'"></span>
+                    <img class="object-cover" src="./static/me.jpg" alt="My image">
+                </figure>
+
+                <div class="mt-8 md:mt-16 overflow-hidden">
+                    <h1 class="font-bold text-3xl md:text-4xl">
+                    Creating
+                        <span class="relative block w-full py-4">
+                            <span id="text-animation-fast" class="xy-align w-full">
+                                <span class="inner inline-block w-full opacity-0">fast</span>
+                            </span>
+                            <span id="text-animation-beautiful" class="xy-align w-full">
+                                <span class="inner inline-block w-full opacity-0">beautiful</span>
+                            </span>
+                            <span id="text-animation-scalable" class="xy-align w-full">
+                                <span class="inner inline-block w-full opacity-0">scalable</span>
+                            </span>
+                            <span id="text-animation-optimized" class="xy-align w-full">
+                                <span class="inner inline-block w-full opacity-0">optimized</span>
+                            </span>
+                        </span>
+                    web-apps is my expertise
+                    </h1>
+                    <h2 class="mt-4 md:text-lg" :class="darkMode ? 'text-gray-500' : 'text-gray-700'">I am a full-stack web developer with a lot of passion for what i'm doing!</h2>
+                    <nav class="mt-8 flex justify-center">
+                        <a href="#contact" class="text-sm px-4 py-3 rounded font-bold uppercase text-white" :class="darkMode ? 'bg-pink-600' : 'bg-purple-600' ">Contact</a>
                     </nav>
                 </div>
-                <figure class="w-full md:w-5/12 md:pl-16"><img class="w-1/2 object-cover mx-auto rounded-lg shadow-lg md:w-full" src="assets/me.png" alt="A selfie of yours truly."></figure>
             </section>
-            <section class="py-16 border-b-2 border-t-2 bg-gray-100" :class="darkMode ? 'bg-gray-900 border-gray-800' : 'bg-gray-100'">
-                <div class="max-w-screen-lg mx-auto px-8">
-                    <h3 class="font-bold leading-tight text-2xl md:text-3xl">What I do for a living.</h3>
-                    <p class="mt-2 max-w-lg">Listed below you will find a comprehensive list of the skills and services that I provide for my clients.</p>
-                    <div class="mt-16 grid grid-cols-1 gap-16 sm:grid-cols-2 lg:grid-cols-3">
-                        <div>
-                            <h4 class="font-bold">Accessibility</h4>
-                            <p class="mt-2 text-sm">I am constantly making sure the code I produce is WCAG compliant and accessible to all users, regardless of their disabilities. Nobody should have a poor experience when it comes to the web.</p>
-                        </div>
-                        <div>
-                            <h4 class="font-bold">Backend Development</h4>
-                            <p class="mt-2 text-sm">I can build full-blown traditional content management systems with Craft CMS, or headless APIs for accessing and consuming data with Node and GraphQL.</p>
-                        </div>
-                        <div>
-                            <h4 class="font-bold">Deployment</h4>
-                            <p class="mt-2 text-sm">I am an expert at configuring continuous deployment and continuous integration. My tools of choice are DigitalOcean, Netlify, and GitHub Actions.</p>
-                        </div>
-                        <div>
-                            <h4 class="font-bold">Frontend Development</h4>
-                            <p class="mt-2 text-sm">My biggest strength is turning static mockups and designs into fully responsive codebases. I am proficient in the latest and greatest frontend frameworks like React, Vue, Svelte, and TailwindCSS.</p>
-                        </div>
-                        <div>
-                            <h4 class="font-bold">Hosting</h4>
-                            <p class="mt-2 text-sm">Regardless of project type, I can configure servers, domains, and credentials to make sure everything is secure, performant, and dead-simple.</p>
-                        </div>
-                        <div>
-                            <h4 class="font-bold">Web Consulting</h4>
-                            <p class="mt-2 text-sm">I can observe, diagnose, and recommend solutions in all of the services listed on this very page.</p>
-                        </div>
+            <section class="py-16 border-b-2 border-t-2" :class="darkMode ? 'bg-gray-800 border-gray-700' : 'bg-gray-100'">
+                <div class="mx-auto px-8 text-left md:text-center">
+                    <h3 class="font-bold leading-tight text-2xl md:text-3xl">Being a web developer</h3>
+                    <p class="mt-2 max-w-lg md:mx-auto" :class="darkMode ? 'text-gray-500' : 'text-gray-700'">Well, for my opinion it means never stop exploring and learning. here are some I chose to focus on:</p>
+                </div>
+                <div class="swiper-container mt-16 md:px-8 ">
+                    <div class="swiper-wrapper md:grid md:gap-16 md:grid-cols-2">
+                        
+                            <div class="swiper-slide px-8 md:px-0">
+                                <span class="font-bold">Front-end Development</span>
+                                <p class="mt-2 text-sm">Creating a pixel-perfect web-apps from ground up focusing on accessibility and driven by a fine UI and smooth experience.</p>
+                            </div>
+                        
+                            <div class="swiper-slide px-8 md:px-0">
+                                <span class="font-bold">Back-end Development</span>
+                                <p class="mt-2 text-sm">Build a scalable light-speed data solutions API&#39;s, CMS or admin dashboards using Wordpress or Node for content or data management</p>
+                            </div>
+                        
+                            <div class="swiper-slide px-8 md:px-0">
+                                <span class="font-bold">Deployment &amp; Hosting</span>
+                                <p class="mt-2 text-sm">From development to production - implementing the right solutions for continues deployment and hosting that&#39;s fit your app to scale.</p>
+                            </div>
+                        
+                            <div class="swiper-slide px-8 md:px-0">
+                                <span class="font-bold">Consulting</span>
+                                <p class="mt-2 text-sm">After 5 years on the field, I can ensure to provide creative and elegant solutions for any type of service I&#39;ve listed here.</p>
+                            </div>
+                        
                     </div>
+                    <div class="swiper-pagination flex md:hidden"></div>
                 </div>
             </section>
-            <section>Timeline</section>
-            <section>Project</section>
-            <form name="contact" method="post" aria-label="contact form" action="/?contact" id="contact" class="max-w-screen-lg mx-auto px-8 py-16"><input type="hidden" name="form-name" value="contact">
-                <div x-show="!submittedForm" class="max-w-lg">
-                    <h3 class="font-bold leading-tight text-2xl md:text-3xl">Get in touch with me.</h3>
-                    <p class="mt-2">Fill out the form below, and I'll be in contact as soon as possible. Thank you so much for taking the time to check me out.</p>
+
+            <section  class="py-16">
+                <h3 class="font-bold text-center text-2xl md:text-3xl px-8">How I got these expertise?</h3>
+                <div class="timeline mt-16">
+                    <ul>
+                        
+                            <li class="py-8 ml-16 pl-16 pr-8 md:ml-0 md:pl-0 md:pr-0">
+                                <span class="year text-sm md:text-base" :class="darkMode ? 'text-gray-500' : 'text-gray-700'">2015-2017</span>
+                                <div class="company w-24 h-24 rounded-full bg-white border">
+                                    <img class="xy-align w-9/12" src="./static/hackeru.png" alt="HackerU logo"/>
+                                </div>
+                                <div class="content">
+                                    <span class="font-bold">HackerU - Cyber academy</span>
+                                    <p class="mt-2 text-sm">As a developer on the Marketing team, My role was to developing and maintaining web-apps, websites and data-dashboards integrated with the most familiar API&#39;s driven for gathering and managing user data.</p>
+                                </div>
+                            </li>
+                        
+                            <li class="py-8 ml-16 pl-16 pr-8 md:ml-0 md:pl-0 md:pr-0">
+                                <span class="year text-sm md:text-base" :class="darkMode ? 'text-gray-500' : 'text-gray-700'">2017-2019</span>
+                                <div class="company w-24 h-24 rounded-full bg-white border">
+                                    <img class="xy-align w-9/12" src="./static/sogo.png" alt="Sogo Digital logo"/>
+                                </div>
+                                <div class="content">
+                                    <span class="font-bold">Sogo Digital - Web solutions</span>
+                                    <p class="mt-2 text-sm">Creating high-end eCommerce and web-apps for enterprises and large companies while Leading a team of developers and designers for better workflows and practices.</p>
+                                </div>
+                            </li>
+                        
+                            <li class="py-8 ml-16 pl-16 pr-8 md:ml-0 md:pl-0 md:pr-0">
+                                <span class="year text-sm md:text-base" :class="darkMode ? 'text-gray-500' : 'text-gray-700'">2019-Present</span>
+                                <div class="company w-24 h-24 rounded-full bg-white border">
+                                    <img class="xy-align w-9/12" src="./static/yotpo.png" alt="Yotpo logo"/>
+                                </div>
+                                <div class="content">
+                                    <span class="font-bold">Yotpo - eCommerce solutions</span>
+                                    <p class="mt-2 text-sm">Developing pixel-perfect web-apps while exploring data / front end solutions and implementing them. Yotpo is the largest company I&#39;ve worked on so far with over 400 employees.</p>
+                                </div>
+                            </li>
+                        
+                    </ul>
                 </div>
-                <div x-show="submittedForm" class="max-w-lg" style="display: none;">
-                    <h3 class="font-bold leading-tight text-2xl md:text-3xl">Thank you for reaching out!</h3>
-                    <p class="mt-2">I will be in touch very shortly, my friend.</p>
+            </section>
+
+            <section id="stack" class="px-8 md:px-0 py-16 text-center">
+                <h3 class="font-bold leading-tight text-2xl md:text-3xl">My work companions</h3>
+                <div class="mt-16 grid gap-16 grid-cols-2 grid-rows-3 md:grid-cols-3">
+                    
+                        <div class="flex justify-center items-center">
+                            <img src="./static/javascript.svg" class="transition-all duration-300 ease-in-out w-16" alt="Stack logo" data-tippy-content="&lt;u&gt;Javascript:&lt;/u&gt; For adding the logic that drives our web page" :data-tippy-theme="darkMode ? 'dark' : 'light' "/>
+                        </div>
+                    
+                        <div class="flex justify-center items-center">
+                            <img src="./static/html.svg" class="transition-all duration-300 ease-in-out w-12" alt="Stack logo" data-tippy-content="&lt;u&gt;HTML:&lt;/u&gt; For a clean and accessible web page markup" :data-tippy-theme="darkMode ? 'dark' : 'light' "/>
+                        </div>
+                    
+                        <div class="flex justify-center items-center">
+                            <img src="./static/sass.svg" class="transition-all duration-300 ease-in-out w-20" alt="Stack logo" data-tippy-content="&lt;u&gt;SASS:&lt;/u&gt; For creating a scalable web page style" :data-tippy-theme="darkMode ? 'dark' : 'light' "/>
+                        </div>
+                    
+                        <div class="flex justify-center items-center">
+                            <img src="./static/wordpress.svg" class="transition-all duration-300 ease-in-out w-16" alt="Stack logo" data-tippy-content="&lt;u&gt;Worpress:&lt;/u&gt; For content management" :data-tippy-theme="darkMode ? 'dark' : 'light' "/>
+                        </div>
+                    
+                        <div class="flex justify-center items-center">
+                            <img src="./static/gulp.svg" class="transition-all duration-300 ease-in-out w-8" alt="Stack logo" data-tippy-content="&lt;u&gt;Gulp:&lt;/u&gt; For automating development tasks" :data-tippy-theme="darkMode ? 'dark' : 'light' "/>
+                        </div>
+                    
+                        <div class="flex justify-center items-center">
+                            <img src="./static/php.svg" class="transition-all duration-300 ease-in-out w-24" alt="Stack logo" data-tippy-content="&lt;u&gt;PHP:&lt;/u&gt; The base language for most of my back-end apps" :data-tippy-theme="darkMode ? 'dark' : 'light' "/>
+                        </div>
+                    
+                        <div class="flex justify-center items-center">
+                            <img src="./static/react.svg" class="transition-all duration-300 ease-in-out w-16" alt="Stack logo" data-tippy-content="&lt;u&gt;React-JS:&lt;/u&gt; A framework by Facebook for creating a scalable or complex front-end wep-apps" :data-tippy-theme="darkMode ? 'dark' : 'light' "/>
+                        </div>
+                    
+                        <div class="flex justify-center items-center">
+                            <img src="./static/vue.svg" class="transition-all duration-300 ease-in-out w-16" alt="Stack logo" data-tippy-content="&lt;u&gt;Vue-JS:&lt;/u&gt; A framework for creating a scalable or complex front-end wep-apps" :data-tippy-theme="darkMode ? 'dark' : 'light' "/>
+                        </div>
+                    
+                        <div class="flex justify-center items-center">
+                            <img src="./static/webpack.svg" class="transition-all duration-300 ease-in-out w-20" alt="Stack logo" data-tippy-content="&lt;u&gt;Webpack:&lt;/u&gt; For optimizing front end assets like JS, CSS or images" :data-tippy-theme="darkMode ? 'dark' : 'light' "/>
+                        </div>
+                    
                 </div>
-                <div x-show="!submittedForm" class="mt-16 grid grid-cols-2 gap-8">
-                    <label class="col-span-2 md:col-span-1">
-                        <span class="block">Name:</span>
-                        <input name="name" required="" class="mt-2 form-input w-full" :class="darkMode ? 'text-gray-900' : ''"></label>
-                    <label class="col-span-2 md:col-span-1">
-                        <span class="block">Email:</span>
-                        <input name="email" type="email" required="" class="mt-2 form-input w-full" :class="darkMode ? 'text-gray-900' : ''"></label>
-                    <label class="col-span-2">
-                        <span class="block">Message:</span>
-                        <textarea name="message" rows="7" required="" class="mt-2 form-textarea w-full" :class="darkMode ? 'text-gray-900' : ''"></textarea>
-                    </label>
-                    <div class="col-span-2">
-                        <button type="submit" class="text-sm px-4 py-3 rounded font-bold uppercase tracking-wide bg-indigo-500 text-white">Submit</button>
-                    </div>
+            </section>
+
+            <section id="contact" class="py-16 border-b-2 border-t-2" :class="darkMode ? 'border-gray-700' : ''">
+                <div class="mx-auto px-8 text-center">
+                    <h3 class="font-bold leading-tight text-2xl md:text-3xl">Let's connect</h3>
+                    <p class="mt-2 max-w-lg md:mx-auto" :class="darkMode ? 'text-gray-500' : 'text-gray-700'">I'm currently <strong>not availabe</strong> for freelance projects, but I'll like to hear from you for future collaborations</p>
                 </div>
-            </form>
+                <div class="text-center mt-8">
+                    <a href="mailto:barzioni90@gmail.com" class="text-2xl relative" :class="darkMode ? 'dark' : 'light'" target="_blank">barzioni90@gmail.com</a>
+                </div>
+                <div class="w-full flex items-center justify-center mt-8 space-x-4">
+                    <a href="https://github.com/bzioni" target="_blank" class="w-6 h-6 transition duration-300 ease-in-out" :class="darkMode ? 'hover:text-gray-500' : 'hover:text-gray-700'">
+                        <svg class="fill-current" aria-hidden="true" focusable="false" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512">
+                            <path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path>
+                        </svg>
+                    </a>
+                    <a href="https://www.linkedin.com/in/barz/" target="_blank" class="w-6 h-6 transition duration-300 ease-in-out" :class="darkMode ? 'hover:text-gray-500' : 'hover:text-gray-700'">
+                        <svg class="fill-current" aria-hidden="true" focusable="false" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                            <path d="M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.5 0 53.8a53.79 53.79 0 0 1 107.58 0c0 29.7-24.1 54.3-53.79 54.3zM447.9 448h-92.68V302.4c0-34.7-.7-79.2-48.29-79.2-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3 94 0 111.28 61.9 111.28 142.3V448z"></path>
+                        </svg>
+                    </a>
+                </div>
+            </section>
         </main>
+        <footer class="max-w-screen-md mx-auto py-4 text-center" :class="darkMode ? 'bg-gray-800' : 'bg-gray-100'">
+            <span x-data="{ year: new Date().getFullYear() }" x-text="`Bar Zioni | © ${year} `"></span>
+        </footer>
         <script src="./assets/body.bundle.js"></script>
     </body>
 </html>

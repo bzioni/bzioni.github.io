@@ -177,12 +177,12 @@ const animateOptimizedText = () => {
       ],
     });
 };
-animateFastText();
 
 tippy("[data-tippy-content]", {
   animation: "shift-away",
   allowHTML: true,
   theme: darkMode().darkMode ? "dark" : "light",
+  maxWidth: 300,
   // checking for darkmode and apply scheme
   onTrigger(instance, event) {
     instance.setProps({
@@ -240,3 +240,7 @@ for (let i = 0; i < anchors.length; i++) {
       .scrollIntoView({ behavior: "smooth" });
   });
 }
+
+window.addEventListener("DOMContentLoaded", (event) => {
+  animateFastText();
+});

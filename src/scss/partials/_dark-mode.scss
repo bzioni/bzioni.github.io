@@ -1,6 +1,9 @@
 button.dark-light-toggle {
-  padding: 30px;
   position: relative;
+  padding: 1rem;
+  &:focus {
+    outline: none;
+  }
   span {
     font-size: 0;
     display: block;
@@ -11,7 +14,7 @@ button.dark-light-toggle {
     border-radius: 50%;
     overflow: visible;
     transition: all 0.45s ease 0s;
-
+    background-color: #1a202c;
     &:before {
       content: "";
       height: 24px;
@@ -43,6 +46,8 @@ button.dark-light-toggle {
     }
 
     &.dark {
+      background-color: #fff;
+
       transform: scale(0.55);
       &:before {
         background-color: #1a202c;
