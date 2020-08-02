@@ -2,7 +2,7 @@ module.exports = {
   title: "How I got these expertise?",
   list: [
     {
-      logo: "./static/hackeru.png",
+      logo: "./static/hackeru.jpg",
       alt: "HackerU logo",
       year: "2015-2017",
       company: "HackerU - Cyber academy",
